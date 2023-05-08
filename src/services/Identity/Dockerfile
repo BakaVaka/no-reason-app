@@ -1,10 +1,13 @@
-FROM mcr.microsoft.com/dotnet/sdk as build
+FROM mcr.microsoft.com/dotnet/sdk:7.0 as build
 
 WORKDIR /src
 
-COPY ["Identity.csproj", "Identity.csproj"]
-RUN dotnet restore
-RUN dotnet publish --no-restore -o /app
+COPY ["services/Identity/Identity.csproj", "services/Identity/"]
+RUN dotnet restore services/Identity/Identity.csproj
+
+COPY . .
+
+RUN dotnet publish services/Identity/Identity.csproj --no-restore -o /app 
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 as final
 WORKDIR /app
