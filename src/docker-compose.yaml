@@ -9,6 +9,16 @@ services:
       POSTGRES_PASSWORD: "secret"
     ports:
       - "5432:5432"
+  web-client:
+    container_name: web-clinet
+    hostname: baka.client
+    restart: on-failure
+    ports:
+      - 8000:80
+      - 8001:443
+    build:
+      context: clients/spa-client
+      dockerfile: Dockerfile
   identity:
     container_name: identity
     hostname: baka.identity
@@ -20,5 +30,5 @@ services:
       context: .
       dockerfile: services/identity/Dockerfile
     depends_on: 
-      - postgres 
+      - postgres
   

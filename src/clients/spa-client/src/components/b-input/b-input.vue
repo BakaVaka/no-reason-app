@@ -1,17 +1,13 @@
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue';
-
 type inputType = "text" | "email" | "password"
-
-defineProps({
+const props = defineProps({
     label:String,
-    value:String,
-    type:
+    value:String
 });
-const emit = defineEmits(['update:value'])
+const emit = defineEmits(['update'])
 
-function onValueChanged(e:Event){
-    emit('update:value', e.target.value)
+function onValueChanged(e:any){
+    emit('update', e.target.value)
 }
 
 </script>

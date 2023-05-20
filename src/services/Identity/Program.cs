@@ -1,6 +1,7 @@
 using System.Reflection;
 
 using Identity.Data;
+using Identity.Infrastructure.JWT;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -17,14 +18,21 @@ builder.Services.AddSwaggerGen(options => {
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
-builder.Services.AddAuthentication();
+
+builder.Services.AddJwtAuthentication(
+    new JwtAuthOptions {
+        Issuer = builder.Configuration["Auth:iss"],
+        Audience = builder.Configuration["Auth:aud"]
+
+    });
+
 builder.Services.AddAuthorization();
 
-builder.Services.AddSingleton( _ => {
+builder.Services.AddSingleton(_ => {
     var connectionString = builder.Configuration.GetConnectionString("IdentityDbContext");
     return new DbContextOptionsBuilder<IdentityDbContext>()
-        .UseNpgsql( connectionString,  o => { })
-        .Options;        
+        .UseNpgsql(connectionString, o => { })
+        .Options;
 });
 
 builder.Services.AddDbContext<IdentityDbContext>();

@@ -14,8 +14,9 @@ public class AuthController : ControllerBase {
     }
 
     [HttpPost("login")]
-    public Task<IActionResult> Login(LoginRequest loginRequest, CancellationToken cancellationToken = default) {
+    public Task<IActionResult> Login(LoginRequest loginRequest,
+                                     CancellationToken cancellationToken = default) {
         throw new NotImplementedException();
     }
-
 }
+
