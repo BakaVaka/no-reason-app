@@ -5,9 +5,9 @@ import bInput from '@/components/b-input';
 const username = ref<string>('')
 const password = ref<string>('')
 
-const emits = defineEmits('logedin')
+const emits = defineEmits(['logedin'])
 
-function onSubmitForm(){ 
+function onSubmitForm() {
     emits('logedin')
 }
 </script>
@@ -18,8 +18,8 @@ function onSubmitForm(){
             <h2>
                 Log in
             </h2>
-            <b-input class="input-form-item" type="email" label="Email" v-model:value="username"/>
-            <b-input class="input-form-item" type="password" label="Password" v-model:value="password"/>
+            <b-input class="input-form-item" type="email" label="Email" v-model:value="username" />
+            <b-input class="input-form-item" type="password" label="Password" v-model:value="password" />
             <br>
             <input type="submit" value="Log in">
         </form>
@@ -27,14 +27,21 @@ function onSubmitForm(){
 </template>
 
 <style scoped>
-.form-wrapper{
+label {
+    margin: 0;
+    padding-left: 8px;
+}
+
+.form-wrapper {
     margin: auto;
     width: 400px;
 }
-.input-form-item{ 
+
+.input-form-item {
     position: relative;
 }
-.form{
+
+.form {
     display: flex;
     flex-direction: column;
     max-width: 300px;
@@ -43,10 +50,12 @@ function onSubmitForm(){
     margin: auto;
 }
 
-input[type='submit']{
+input[type='submit'] {
     padding: 8px;
     border: none;
     width: inherit;
-    
+    border-radius: 7px;
+    cursor: pointer;
 }
+
 </style>

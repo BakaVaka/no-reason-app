@@ -2,7 +2,7 @@
 
 import LoginForm from '@/components/b-login-form'
 
-function onLogedin(){
+function onLogedin() {
     window.location.replace('/')
 }
 
@@ -18,7 +18,7 @@ function onLogedin(){
 
             </div>
             <div class="login-form-container">
-                <login-form @logedin="onLogedin"/>
+                <login-form @logedin="onLogedin" />
             </div>
         </div>
     </div>
@@ -37,7 +37,8 @@ function onLogedin(){
     width: 100%;
 
 }
-.product-identity{
+
+.product-identity {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -54,7 +55,8 @@ function onLogedin(){
     width: 50vw;
     max-width: 700px;
 }
-.placeholder{
+
+.placeholder {
     font-size: 3rem;
     color: rgb(156, 156, 156);
 }

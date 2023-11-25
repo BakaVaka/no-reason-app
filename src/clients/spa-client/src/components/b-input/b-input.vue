@@ -36,7 +36,6 @@ label,input{ width: inherit; }
 
 label{ 
     font-size: 0.8rem; 
-    margin-left: 10px;
     color: #aaa;
 }
 
