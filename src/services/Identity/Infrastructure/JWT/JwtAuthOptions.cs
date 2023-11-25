@@ -4,7 +4,7 @@ namespace Identity.Infrastructure.JWT;
 
 public class JwtAuthOptions {
     public string Issuer { get; init; }
-    public string Audience { get; init;  }
+    public string Audience { get; init; }
     public TimeSpan AccessTokenLifetime { get; init; }
     public TimeSpan RefreshTokenLifetime { get; init; }
     public SecurityKey SigningKey { get; init; }

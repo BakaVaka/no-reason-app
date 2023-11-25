@@ -1,0 +1,5 @@
+Admin;View.Users
+Admin;Write.Users
+Admin;Delete.Users
+Moderator;View.Users
+Moderator;Write.Users

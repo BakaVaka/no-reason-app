@@ -24,7 +24,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 
 
-    <None Update="Setup\*.csv">
+    <None Update="Data\Setup\*.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

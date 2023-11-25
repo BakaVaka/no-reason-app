@@ -3,8 +3,7 @@ using System.Security.Claims;
 
 namespace Identity.Infrastructure.JWT;
 
-public class JwtService<T> : IJwtService<T>
-{
+public class JwtService<T> : IJwtService<T> {
     private readonly ClaimsProvider<T> _claimsProvider;
     private readonly JwtAuthOptions _authOptions;
 

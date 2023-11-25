@@ -14,9 +14,17 @@ public class AuthController : ControllerBase {
     }
 
     [HttpPost("login")]
-    public Task<IActionResult> Login(LoginRequest loginRequest,
-                                     CancellationToken cancellationToken = default) {
-        throw new NotImplementedException();
+    public async Task<IActionResult> Login(LoginRequest loginRequest, CancellationToken cancellationToken = default) {
+        try {
+            var response = await _userService.Login(loginRequest, cancellationToken);
+            if( response is not null ) {
+                return Ok(response);
+            }
+        }
+        catch( Exception ex ) {
+            return StatusCode(500, new { Error = $"{ex.Message}" });
+        }
+        return StatusCode(401, new { Error = "Auth fail" });
     }
 }
 
